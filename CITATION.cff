@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it using the metadata below."
+title: "MOT Risk Index Evidence Capsule: Great Britain family and defect-group aggregates, 2024"
+type: dataset
+authors:
+  - family-names: "Ivitskiy"
+    given-names: "Igor"
+    orcid: "https://orcid.org/0000-0002-9749-6414"
+    affiliation: "MOT Risk Index"
+version: 2024-v2
+date-released: 2026-08-23
+url: "https://motriskindex.co.uk/statistics/mot-failure-rates/"
+license: CC-BY-4.0
+abstract: >-
+  This dataset publishes aggregated 2024 Great Britain MOT initial-test outcomes
+  for 34 vehicle families. It provides age-adjusted family ratios and
+  prespecified defect-group rates, excesses and over-representation ratios with
+  disclosure-control thresholds; no vehicle-level or geographic records are included.
+keywords:
+  - MOT
+  - vehicle inspection
+  - DVSA
+  - open data
+  - Great Britain

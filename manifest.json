@@ -1,0 +1,296 @@
+{
+  "schema_version": "1.0.0",
+  "release": {
+    "dataset_release_id": "motriskindex-families-2024-v2",
+    "version": "2024-v2",
+    "date_released": "2026-08-23",
+    "source_snapshot_date": "2026-07-30",
+    "temporal_coverage": "2024-01-01/2024-12-31",
+    "spatial_coverage": "Great Britain",
+    "vehicle_scope": "DVSA class-4 initial MOT tests with P, F or PRS outcomes",
+    "family_coverage": {
+      "registry_families": 34,
+      "published_families": 34,
+      "suppressed_families": 0
+    },
+    "defect_group_coverage": {
+      "prespecified_groups": 11,
+      "candidate_family_group_cells": 374,
+      "published_cells": 340,
+      "primary_suppressed_cells": 32,
+      "secondary_suppressed_cells": 2,
+      "groups": [
+        "Lamps, reflectors and electrical equipment",
+        "Suspension",
+        "Brakes",
+        "Visibility",
+        "Tyres",
+        "Body, chassis, structure",
+        "Noise, emissions and leaks",
+        "Steering",
+        "Seat belts and supplementary restraint systems",
+        "Identification of the vehicle",
+        "Road Wheels"
+      ]
+    },
+    "suppression": {
+      "minimum_n": 1000,
+      "low_sample_min_n": 1000,
+      "low_sample_max_n": 5000,
+      "family_n": "eligible class-4 initial tests in the family",
+      "defect_cell_n": "failure-item occurrences in the family and defect group",
+      "primary_rule": "A row with n below 1,000 is omitted rather than published with blanks.",
+      "secondary_rule": "Within a complete family slice, when exactly one prespecified defect-group cell is primarily suppressed, the next-smallest publishable cell is also omitted so the primary cell cannot be recovered by subtraction. Two or more primary suppressions already prevent reconstruction.",
+      "low_sample_rule": "A published row with n from 1,000 through 5,000 inclusive has confidence=low_sample."
+    },
+    "geographic_slices_included": false,
+    "vehicle_level_data_included": false,
+    "source_inputs": [
+      {
+        "name": "DVSA Anonymised MOT tests and results, 2024 test results",
+        "license": "OGL-3.0",
+        "role": "Initial-test outcomes, class, test type, dates, vehicle age inputs and family mapping inputs"
+      },
+      {
+        "name": "DVSA Anonymised MOT tests and results, 2024 failure items",
+        "license": "OGL-3.0",
+        "role": "Failure-item occurrence counts"
+      },
+      {
+        "name": "DVSA MOT test item detail and item group lookup tables",
+        "license": "OGL-3.0",
+        "role": "Top-level defect taxonomy"
+      }
+    ]
+  },
+  "files": {
+    "motriskindex-families-2024-v2.csv": {
+      "grain": "one row per published vehicle family",
+      "rows": 34,
+      "columns": [
+        {
+          "name": "claim_id",
+          "source": "MOT Risk Index own derivation",
+          "license": "CC-BY-4.0",
+          "unit": "identifier",
+          "denominator": "not applicable",
+          "definition": "Stable identifier for the family-level aggregation claim."
+        },
+        {
+          "name": "family",
+          "source": "MOT Risk Index explicit make/model family registry",
+          "license": "CC-BY-4.0",
+          "unit": "slug identifier",
+          "denominator": "not applicable",
+          "definition": "Canonical vehicle-family slug produced by the conservative make/model mapping."
+        },
+        {
+          "name": "n",
+          "source": "DVSA Anonymised MOT tests and results (OGL v3.0)",
+          "license": "OGL-3.0",
+          "unit": "tests",
+          "denominator": "not applicable; this is the family denominator count",
+          "definition": "Count of class-4 initial tests with P, F or PRS outcomes in this family during 2024."
+        },
+        {
+          "name": "initial_failures_n",
+          "source": "DVSA Anonymised MOT tests and results (OGL v3.0)",
+          "license": "OGL-3.0",
+          "unit": "tests",
+          "denominator": "n",
+          "definition": "Count of eligible initial tests whose outcome was F or PRS."
+        },
+        {
+          "name": "initial_fail_pct",
+          "source": "MOT Risk Index own derivation from DVSA outcomes",
+          "license": "CC-BY-4.0 (derivation); source data OGL-3.0",
+          "unit": "percent",
+          "denominator": "n eligible family initial tests",
+          "definition": "Percentage of eligible initial tests with an F or PRS outcome."
+        },
+        {
+          "name": "strict_failures_n",
+          "source": "DVSA Anonymised MOT tests and results (OGL v3.0)",
+          "license": "OGL-3.0",
+          "unit": "tests",
+          "denominator": "n",
+          "definition": "Count of eligible initial tests whose recorded outcome was F."
+        },
+        {
+          "name": "strict_fail_pct",
+          "source": "MOT Risk Index own derivation from DVSA outcomes",
+          "license": "CC-BY-4.0 (derivation); source data OGL-3.0",
+          "unit": "percent",
+          "denominator": "n eligible family initial tests",
+          "definition": "Percentage of eligible initial tests with a recorded F outcome."
+        },
+        {
+          "name": "prs_n",
+          "source": "DVSA Anonymised MOT tests and results (OGL v3.0)",
+          "license": "OGL-3.0",
+          "unit": "tests",
+          "denominator": "n",
+          "definition": "Count of eligible initial tests whose recorded outcome was PRS."
+        },
+        {
+          "name": "prs_pct",
+          "source": "MOT Risk Index own derivation from DVSA outcomes",
+          "license": "CC-BY-4.0 (derivation); source data OGL-3.0",
+          "unit": "percent",
+          "denominator": "n eligible family initial tests",
+          "definition": "Percentage of eligible initial tests with a PRS outcome."
+        },
+        {
+          "name": "age_adjusted_mot_initial_failure_ratio",
+          "source": "MOT Risk Index own derivation from DVSA outcomes and the frozen national age baseline",
+          "license": "CC-BY-4.0 (derivation); source data OGL-3.0",
+          "unit": "ratio index; 100 equals age-expected",
+          "denominator": "expected F-plus-PRS initial failures from the national rate in each age stratum, weighted by the family's test count in that stratum",
+          "definition": "One hundred times observed F-plus-PRS initial failures divided by age-expected initial failures."
+        },
+        {
+          "name": "ratio_ci95_low",
+          "source": "MOT Risk Index own derivation",
+          "license": "CC-BY-4.0",
+          "unit": "ratio index",
+          "denominator": "the same frozen expected-failure count used by age_adjusted_mot_initial_failure_ratio",
+          "definition": "Lower endpoint of the 95% Wilson-score interval on the observed initial-failure proportion after scaling to the ratio index."
+        },
+        {
+          "name": "ratio_ci95_high",
+          "source": "MOT Risk Index own derivation",
+          "license": "CC-BY-4.0",
+          "unit": "ratio index",
+          "denominator": "the same frozen expected-failure count used by age_adjusted_mot_initial_failure_ratio",
+          "definition": "Upper endpoint of the 95% Wilson-score interval on the observed initial-failure proportion after scaling to the ratio index."
+        },
+        {
+          "name": "confidence",
+          "source": "MOT Risk Index suppression rule",
+          "license": "CC-BY-4.0",
+          "unit": "categorical marker",
+          "denominator": "n",
+          "definition": "Sample marker set to low_sample for n from 1,000 through 5,000 inclusive and ok above 5,000."
+        },
+        {
+          "name": "source_data_release_id",
+          "source": "MOT Risk Index provenance registry",
+          "license": "CC-BY-4.0",
+          "unit": "identifier",
+          "denominator": "not applicable",
+          "definition": "Identifier of the frozen processed DVSA source release used for the claim."
+        },
+        {
+          "name": "dataset_release_id",
+          "source": "MOT Risk Index release registry",
+          "license": "CC-BY-4.0",
+          "unit": "identifier",
+          "denominator": "not applicable",
+          "definition": "Identifier of this published evidence-capsule release."
+        }
+      ]
+    },
+    "motriskindex-defect-groups-2024-v2.csv": {
+      "grain": "one row per published vehicle family and prespecified top-level defect group",
+      "rows": 340,
+      "columns": [
+        {
+          "name": "claim_id",
+          "source": "MOT Risk Index own derivation",
+          "license": "CC-BY-4.0",
+          "unit": "identifier",
+          "denominator": "not applicable",
+          "definition": "Stable identifier for the family and defect-group aggregation claim."
+        },
+        {
+          "name": "family",
+          "source": "MOT Risk Index explicit make/model family registry",
+          "license": "CC-BY-4.0",
+          "unit": "slug identifier",
+          "denominator": "not applicable",
+          "definition": "Canonical vehicle-family slug produced by the conservative make/model mapping."
+        },
+        {
+          "name": "defect_group",
+          "source": "DVSA MOT test item taxonomy (OGL v3.0)",
+          "license": "OGL-3.0",
+          "unit": "category",
+          "denominator": "not applicable",
+          "definition": "Prespecified top-level class-4 DVSA inspection group assigned by walking the item taxonomy."
+        },
+        {
+          "name": "n",
+          "source": "DVSA Anonymised MOT failure items (OGL v3.0)",
+          "license": "OGL-3.0",
+          "unit": "failure-item occurrences",
+          "denominator": "initial_tests_2024",
+          "definition": "Count of F or M coded failure-item occurrences in this family and defect group."
+        },
+        {
+          "name": "initial_tests_2024",
+          "source": "DVSA Anonymised MOT tests and results (OGL v3.0)",
+          "license": "OGL-3.0",
+          "unit": "tests",
+          "denominator": "not applicable; this is the rate denominator count",
+          "definition": "Count of class-4 initial tests with P, F or PRS outcomes in this family during 2024."
+        },
+        {
+          "name": "failure_items_per_100_tests",
+          "source": "MOT Risk Index own derivation from DVSA failure items",
+          "license": "CC-BY-4.0 (derivation); source data OGL-3.0",
+          "unit": "failure-item occurrences per 100 tests",
+          "denominator": "initial_tests_2024 eligible family initial tests",
+          "definition": "One hundred times the family's group-level failure-item count divided by its eligible initial tests."
+        },
+        {
+          "name": "national_failure_items_per_100_tests",
+          "source": "MOT Risk Index own derivation from all eligible national DVSA tests and failure items",
+          "license": "CC-BY-4.0 (derivation); source data OGL-3.0",
+          "unit": "failure-item occurrences per 100 tests",
+          "denominator": "all Great Britain class-4 initial tests with P, F or PRS outcomes in 2024",
+          "definition": "National benchmark rate for the same defect group across all eligible initial tests."
+        },
+        {
+          "name": "excess_pp",
+          "source": "MOT Risk Index own derivation",
+          "license": "CC-BY-4.0",
+          "unit": "percentage points of failure-item occurrences per 100 tests",
+          "denominator": "family and national rates use their respective eligible initial-test counts",
+          "definition": "Family failure-items-per-100 rate minus the national rate for the same group."
+        },
+        {
+          "name": "over_representation_ratio",
+          "source": "MOT Risk Index own derivation",
+          "license": "CC-BY-4.0",
+          "unit": "ratio",
+          "denominator": "national_failure_items_per_100_tests for the same defect group",
+          "definition": "Family failure-items-per-100 rate divided by the national rate for the same group."
+        },
+        {
+          "name": "confidence",
+          "source": "MOT Risk Index suppression rule",
+          "license": "CC-BY-4.0",
+          "unit": "categorical marker",
+          "denominator": "n failure-item occurrences",
+          "definition": "Sample marker set to low_sample for n from 1,000 through 5,000 inclusive and ok above 5,000."
+        },
+        {
+          "name": "source_data_release_id",
+          "source": "MOT Risk Index provenance registry",
+          "license": "CC-BY-4.0",
+          "unit": "identifier",
+          "denominator": "not applicable",
+          "definition": "Identifier of the frozen processed DVSA source release used for the claim."
+        },
+        {
+          "name": "dataset_release_id",
+          "source": "MOT Risk Index release registry",
+          "license": "CC-BY-4.0",
+          "unit": "identifier",
+          "denominator": "not applicable",
+          "definition": "Identifier of this published evidence-capsule release."
+        }
+      ]
+    }
+  }
+}
