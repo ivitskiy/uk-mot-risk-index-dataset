@@ -35,3 +35,9 @@ Source data is Crown copyright and was supplied by the Driver and Vehicle Standa
 Original MOT Risk Index derivations and metadata in this package are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Suggested attribution: “MOT Risk Index Research Desk, MOT Risk Index Evidence Capsule — 2024 v2, https://motriskindex.co.uk/statistics/mot-failure-rates/”. The underlying DVSA material remains under the Open Government Licence v3.0.
 
 Questions and corrections: [data@motriskindex.co.uk](mailto:data@motriskindex.co.uk).
+
+## Citation
+
+Ivitskiy, I. (2026). *MOT Risk Index Evidence Capsule: Great Britain vehicle-family and defect-group aggregates, 2024* (Version 2024-v2) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22071425
+
+Mirrors: [Hugging Face](https://huggingface.co/datasets/ivitskiy/uk-mot-risk-index) · [GitHub](https://github.com/ivitskiy/uk-mot-risk-index-dataset)
