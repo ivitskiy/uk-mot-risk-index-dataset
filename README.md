@@ -1,11 +1,21 @@
-# MOT Risk Index Evidence Capsule — 2024 v2
+# MOT Risk Index Evidence Capsule — 2024 v3
 
-This package is a machine-readable release of aggregated MOT inspection outcomes for 34 vehicle families in Great Britain. It contains family-level initial-test outcomes and a separate family-by-defect-group table that shows where failure items are over-represented against the national class-4 benchmark. The canonical dataset page is [UK MOT failure rates 2024](https://motriskindex.co.uk/statistics/mot-failure-rates/).
+This package is a machine-readable release of aggregated MOT inspection outcomes for 625 vehicle families in Great Britain. It contains family-level initial-test outcomes and a separate family-by-defect-group table that shows where failure items are over-represented against the national class-4 benchmark. The canonical dataset page is [UK MOT failure rates 2024](https://motriskindex.co.uk/statistics/mot-failure-rates/).
+
+Released 2026-09-24. Dataset release: `motriskindex-families-2024-v3`; source release: `dvsa-2024-v2`.
+
+## Erratum
+
+v1 and v2 counted repeated records in the DVSA 2024 source files: 66,857,355 rows represented 42,598,624 distinct tests before conflict exclusions. The corrected class-4 initial-test count is 33,012,215 (previously 52,245,925), and the national initial-failure rate is 28.28% (previously 26.01%).
+
+v3 keeps one record per retained test ID before analysis filters. The cleaning step selects a representative by validity, completeness and lexical row order; excludes tests whose copies disagree on vehicle identity (class, make, model or vehicle ID); and sets conflicting first-use dates to unknown. Exact duplicate failure-item rows are removed, and only items linked to retained tests are kept. Identical legitimate failure-item entries cannot be distinguished from repeated copies, so this may undercount those entries.
+
+See the [changelog](https://motriskindex.co.uk/changelog/) and [methodology](https://motriskindex.co.uk/methodology/) for the correction and methods. Earlier capsule files are superseded and retained in the site archive.
 
 ## Files
 
-- `motriskindex-families-2024-v2.csv` — one row per published vehicle family.
-- `motriskindex-defect-groups-2024-v2.csv` — one row per published family and prespecified top-level defect group.
+- `motriskindex-families-2024-v3.csv` — one row per published vehicle family.
+- `motriskindex-defect-groups-2024-v3.csv` — one row per published family and prespecified top-level defect group.
 - `manifest.json` — release metadata and a source, licence, unit, denominator and one-sentence definition for every CSV column.
 - `CITATION.cff` — citation metadata for repositories and research catalogues.
 - `checksums.txt` — SHA-256 digests for every payload and metadata file in the package.
@@ -26,18 +36,20 @@ Families or defect-group cells with `n < 1,000` are omitted completely. Publishe
 
 These are observational inspection outcomes, not causal estimates. Mileage is not adjusted or aligned between families, and differences may also reflect fleet use, fuel mix, maintenance, test presentation and other residual confounding. MOT inspections do not observe all mechanical or electronic systems, so the data do not measure breakdowns, owner complaints or the condition of an individual vehicle.
 
+Family scope is the registry intersected with `site/src/data/family_*.json`, excluding withheld families and entries in `pipeline/release-holds.json`. There are 752 eligible families, of which 127 are suppressed. The defect table publishes 2279 cells, with 4585 primary and 11 secondary suppressions.
+
 The release covers Great Britain, not Northern Ireland, and calendar 2024 only. Make and model values in the source are free text; the family mapping is explicit and conservative. See `manifest.json` for the exact grain and denominator of each column.
 
 ## Licence and attribution
 
 Source data is Crown copyright and was supplied by the Driver and Vehicle Standards Agency. It is used under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). Contains public sector information licensed under the Open Government Licence v3.0.
 
-Original MOT Risk Index derivations and metadata in this package are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Suggested attribution: “MOT Risk Index Research Desk, MOT Risk Index Evidence Capsule — 2024 v2, https://motriskindex.co.uk/statistics/mot-failure-rates/”. The underlying DVSA material remains under the Open Government Licence v3.0.
+Original MOT Risk Index derivations and metadata in this package are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Suggested attribution: “MOT Risk Index Research Desk, MOT Risk Index Evidence Capsule — 2024 v3, https://motriskindex.co.uk/statistics/mot-failure-rates/”. The underlying DVSA material remains under the Open Government Licence v3.0.
 
 Questions and corrections: [data@motriskindex.co.uk](mailto:data@motriskindex.co.uk).
 
 ## Citation
 
-Ivitskiy, I. (2026). *MOT Risk Index Evidence Capsule: Great Britain vehicle-family and defect-group aggregates, 2024* (Version 2024-v2) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22071425
+Ivitskiy, I. (2026). *MOT Risk Index Evidence Capsule: Great Britain vehicle-family and defect-group aggregates, 2024* (Version 2024-v3) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22941910
 
-Mirrors: [Hugging Face](https://huggingface.co/datasets/ivitskiy/uk-mot-risk-index) · [GitHub](https://github.com/ivitskiy/uk-mot-risk-index-dataset)
+DOI of this version: [10.5281/zenodo.22941910](https://doi.org/10.5281/zenodo.22941910). Concept DOI for all versions (always resolves to the latest): [10.5281/zenodo.22071424](https://doi.org/10.5281/zenodo.22071424). Mirrors: [Hugging Face](https://huggingface.co/datasets/ivitskiy/uk-mot-risk-index), [GitHub](https://github.com/ivitskiy/uk-mot-risk-index-dataset), [motriskindex.co.uk/data/](https://motriskindex.co.uk/data/manifest.json).

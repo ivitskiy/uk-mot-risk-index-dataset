@@ -1,24 +1,29 @@
 {
   "schema_version": "1.0.0",
   "release": {
-    "dataset_release_id": "motriskindex-families-2024-v2",
-    "version": "2024-v2",
-    "date_released": "2026-08-23",
+    "dataset_release_id": "motriskindex-families-2024-v3",
+    "version": "2024-v3",
+    "date_released": "2026-09-24",
     "source_snapshot_date": "2026-07-30",
     "temporal_coverage": "2024-01-01/2024-12-31",
     "spatial_coverage": "Great Britain",
     "vehicle_scope": "DVSA class-4 initial MOT tests with P, F or PRS outcomes",
     "family_coverage": {
-      "registry_families": 34,
-      "published_families": 34,
-      "suppressed_families": 0
+      "scope": "Registry families with site/src/data/family_*.json, excluding withheld and held families",
+      "registry_families": 752,
+      "published_families": 625,
+      "suppressed_families": 127,
+      "primary_suppressed_families": 127,
+      "secondary_suppressed_families": 0,
+      "low_sample_families": 228
     },
     "defect_group_coverage": {
       "prespecified_groups": 11,
-      "candidate_family_group_cells": 374,
-      "published_cells": 340,
-      "primary_suppressed_cells": 32,
-      "secondary_suppressed_cells": 2,
+      "candidate_family_group_cells": 6875,
+      "published_cells": 2279,
+      "primary_suppressed_cells": 4585,
+      "secondary_suppressed_cells": 11,
+      "low_sample_cells": 1323,
       "groups": [
         "Lamps, reflectors and electrical equipment",
         "Suspension",
@@ -61,12 +66,13 @@
         "license": "OGL-3.0",
         "role": "Top-level defect taxonomy"
       }
-    ]
+    ],
+    "source_data_release_id": "dvsa-2024-v2"
   },
   "files": {
-    "motriskindex-families-2024-v2.csv": {
+    "motriskindex-families-2024-v3.csv": {
       "grain": "one row per published vehicle family",
-      "rows": 34,
+      "rows": 625,
       "columns": [
         {
           "name": "claim_id",
@@ -190,9 +196,9 @@
         }
       ]
     },
-    "motriskindex-defect-groups-2024-v2.csv": {
+    "motriskindex-defect-groups-2024-v3.csv": {
       "grain": "one row per published vehicle family and prespecified top-level defect group",
-      "rows": 340,
+      "rows": 2279,
       "columns": [
         {
           "name": "claim_id",
@@ -292,5 +298,22 @@
         }
       ]
     }
+  },
+  "erratum": {
+    "date": "2026-09-24",
+    "superseded_releases": [
+      "motriskindex-families-2024-v1",
+      "motriskindex-families-2024-v2"
+    ],
+    "summary": "v1 and v2 counted repeated records in the DVSA 2024 source files. v3 keeps one record per retained test ID before applying analysis filters.",
+    "raw_result_rows": 66857355,
+    "distinct_test_ids_before_conflict_exclusions": 42598624,
+    "class4_initial_tests_before": 52245925,
+    "class4_initial_tests_after": 33012215,
+    "national_initial_failure_pct_before": 26.01,
+    "national_initial_failure_pct_after": 28.28,
+    "method_summary": "Deduplicate test results by test ID before filtering, selecting a representative by validity, completeness and lexical row order. Exclude tests whose copies disagree on vehicle identity (class, make, model or vehicle ID); set conflicting first-use dates to unknown. Remove exact duplicate failure-item rows and retain only items linked to retained tests. Compute class-4 initial-test aggregates from these cleaned inputs, with the existing age adjustment and suppression rules.",
+    "changelog": "https://motriskindex.co.uk/changelog/",
+    "methodology": "https://motriskindex.co.uk/methodology/"
   }
 }
