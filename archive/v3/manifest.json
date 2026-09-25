@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "release": {
-    "dataset_release_id": "motriskindex-families-2024-v4",
-    "version": "2024-v4",
-    "date_released": "2026-09-25",
+    "dataset_release_id": "motriskindex-families-2024-v3",
+    "version": "2024-v3",
+    "date_released": "2026-09-24",
     "source_snapshot_date": "2026-07-30",
     "temporal_coverage": "2024-01-01/2024-12-31",
     "spatial_coverage": "Great Britain",
@@ -70,7 +70,7 @@
     "source_data_release_id": "dvsa-2024-v2"
   },
   "files": {
-    "motriskindex-families-2024-v4.csv": {
+    "motriskindex-families-2024-v3.csv": {
       "grain": "one row per published vehicle family",
       "rows": 625,
       "columns": [
@@ -196,7 +196,7 @@
         }
       ]
     },
-    "motriskindex-defect-groups-2024-v4.csv": {
+    "motriskindex-defect-groups-2024-v3.csv": {
       "grain": "one row per published vehicle family and prespecified top-level defect group",
       "rows": 2279,
       "columns": [
@@ -297,70 +297,6 @@
           "definition": "Identifier of this published evidence-capsule release."
         }
       ]
-    },
-    "motriskindex-outside-sources-2024-v4.csv": {
-      "grain": "one row per family × outside source × measure",
-      "rows": 1779,
-      "columns": [
-        "family",
-        "source",
-        "measure",
-        "value",
-        "unit",
-        "comparator",
-        "n",
-        "window",
-        "scope_note",
-        "dataset_release_id"
-      ],
-      "thresholds": {
-        "inspections_abroad_min": 500
-      },
-      "licences": {
-        "DVSA recalls": "OGL-3.0",
-        "Statens vegvesen": "CC-BY-4.0",
-        "Traficom": "CC-BY-4.0",
-        "RDW": "CC0-1.0",
-        "NHTSA": "US Government work, public domain"
-      }
-    },
-    "motriskindex-mileage-by-age-2024-v4.csv": {
-      "grain": "one row per family × age group × odometer band",
-      "rows": 6228,
-      "columns": [
-        "family",
-        "age_group",
-        "odometer_band",
-        "n",
-        "failures",
-        "fail_pct",
-        "ci95_low",
-        "ci95_high",
-        "rough_estimate",
-        "dataset_release_id"
-      ],
-      "thresholds": {
-        "cell_min_tests": 50,
-        "rough_below_tests": 500
-      },
-      "interval": "Wilson 95%"
-    },
-    "motriskindex-model-years-2024-v4.csv": {
-      "grain": "one row per family × model year",
-      "rows": 6187,
-      "columns": [
-        "family",
-        "model_year",
-        "n",
-        "fail_pct",
-        "vs_own_age_norm",
-        "ci95_low",
-        "ci95_high",
-        "verdict",
-        "rough_estimate",
-        "dataset_release_id"
-      ],
-      "verdict_rule": "better if the printed upper bound is below 100, worse if the printed lower bound is above 100, else no different"
     }
   },
   "erratum": {
@@ -379,6 +315,5 @@
     "method_summary": "Deduplicate test results by test ID before filtering, selecting a representative by validity, completeness and lexical row order. Exclude tests whose copies disagree on vehicle identity (class, make, model or vehicle ID); set conflicting first-use dates to unknown. Remove exact duplicate failure-item rows and retain only items linked to retained tests. Compute class-4 initial-test aggregates from these cleaned inputs, with the existing age adjustment and suppression rules.",
     "changelog": "https://motriskindex.co.uk/changelog/",
     "methodology": "https://motriskindex.co.uk/methodology/"
-  },
-  "changes_from_v3": "Core family and defect-group numbers unchanged (same DVSA 2024 source release); dataset_release_id updated. Added outside sources (DVSA recalls, Norway, Finland, Netherlands, NHTSA explicit pairs), mileage bands within age groups, and model-year ratios with interval verdicts — all values already shown on motriskindex.co.uk pages."
+  }
 }
