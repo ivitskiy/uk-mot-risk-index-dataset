@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "release": {
-    "dataset_release_id": "motriskindex-families-2024-v5",
-    "version": "2024-v5",
-    "date_released": "2026-09-26",
+    "dataset_release_id": "motriskindex-families-2024-v4",
+    "version": "2024-v4",
+    "date_released": "2026-09-25",
     "source_snapshot_date": "2026-07-30",
     "temporal_coverage": "2024-01-01/2024-12-31",
     "spatial_coverage": "Great Britain",
@@ -70,7 +70,7 @@
     "source_data_release_id": "dvsa-2024-v2"
   },
   "files": {
-    "motriskindex-families-2024-v5.csv": {
+    "motriskindex-families-2024-v4.csv": {
       "grain": "one row per published vehicle family",
       "rows": 625,
       "columns": [
@@ -196,7 +196,7 @@
         }
       ]
     },
-    "motriskindex-defect-groups-2024-v5.csv": {
+    "motriskindex-defect-groups-2024-v4.csv": {
       "grain": "one row per published vehicle family and prespecified top-level defect group",
       "rows": 2279,
       "columns": [
@@ -298,7 +298,7 @@
         }
       ]
     },
-    "motriskindex-outside-sources-2024-v5.csv": {
+    "motriskindex-outside-sources-2024-v4.csv": {
       "grain": "one row per family × outside source × measure",
       "rows": 1779,
       "columns": [
@@ -324,7 +324,7 @@
         "NHTSA": "US Government work, public domain"
       }
     },
-    "motriskindex-mileage-by-age-2024-v5.csv": {
+    "motriskindex-mileage-by-age-2024-v4.csv": {
       "grain": "one row per family × age group × odometer band",
       "rows": 6228,
       "columns": [
@@ -345,9 +345,9 @@
       },
       "interval": "Wilson 95%"
     },
-    "motriskindex-model-years-2024-v5.csv": {
+    "motriskindex-model-years-2024-v4.csv": {
       "grain": "one row per family × model year",
-      "rows": 5665,
+      "rows": 6187,
       "columns": [
         "family",
         "model_year",

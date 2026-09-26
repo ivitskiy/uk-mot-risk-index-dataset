@@ -1,8 +1,8 @@
-# MOT Risk Index Evidence Capsule — 2024 v5
+# MOT Risk Index Evidence Capsule — 2024 v4
 
 This package is a machine-readable release of aggregated MOT inspection outcomes for 625 vehicle families in Great Britain. It contains family-level initial-test outcomes and a separate family-by-defect-group table that shows where failure items are over-represented against the national class-4 benchmark. The canonical dataset page is [UK MOT failure rates 2024](https://motriskindex.co.uk/statistics/mot-failure-rates/).
 
-Released 2026-09-26. Dataset release: `motriskindex-families-2024-v5`; source release: `dvsa-2024-v2`.
+Released 2026-09-25. Dataset release: `motriskindex-families-2024-v4`; source release: `dvsa-2024-v2`.
 
 ## Erratum
 
@@ -12,22 +12,18 @@ v3 keeps one record per retained test ID before analysis filters. The cleaning s
 
 See the [changelog](https://motriskindex.co.uk/changelog/) and [methodology](https://motriskindex.co.uk/methodology/) for the correction and methods. Earlier capsule files are superseded and retained in the site archive.
 
-## New in v4 (25 September 2026), kept in v5
+## New in v4 (25 September 2026)
 
 The family and defect-group numbers are the same as v3; only the release identifier changed. Three files add layers the site already shows:
 
-- `motriskindex-outside-sources-2024-v5.csv` (1,779 rows): DVSA recall campaigns listed per model (and per 10,000 licensed where the fleet is known); the share failing the periodic inspection in Norway (PKK), Finland (Katsastus) and the Netherlands (APK), each with that country's own average and at least 500 inspections — compare a model only with its own country's average, because rulebooks differ; NHTSA complaint and service-bulletin counts only where the same vehicle is paired explicitly with a US model-year window (a count, not a failure rate).
-- `motriskindex-mileage-by-age-2024-v5.csv` (6,228 rows): first-time failure by odometer band inside age groups 3–5, 6–9, 10–14 and 15+ years (2024 tests; at least 50 tests per cell; 50–499 tests flagged `rough_estimate` with a Wilson 95% interval).
-- `motriskindex-model-years-2024-v5.csv` (5,665 rows): each model year against the failure rate expected at the same age (`vs_own_age_norm`, 100 = normal) with a 95% interval; `verdict` follows the printed one-decimal bound.
-
-## Erratum in v5 (26 September 2026)
-
-v4 counted MOT tests from 2019 to 2023 twice in `motriskindex-model-years-2024-v4.csv` (a pipeline error introduced on 21 September 2026): the `n` column was inflated, `fail_pct` weighted 2019–2023 double, and the intervals were too narrow. v5 recounts each test once; verdicts follow the corrected intervals. All other files carry the same numbers as v4. Licences and attribution of every source: `ATTRIBUTION.md`.
+- `motriskindex-outside-sources-2024-v4.csv` (1,779 rows): DVSA recall campaigns listed per model (and per 10,000 licensed where the fleet is known); the share failing the periodic inspection in Norway (PKK), Finland (Katsastus) and the Netherlands (APK), each with that country's own average and at least 500 inspections — compare a model only with its own country's average, because rulebooks differ; NHTSA complaint and service-bulletin counts only where the same vehicle is paired explicitly with a US model-year window (a count, not a failure rate).
+- `motriskindex-mileage-by-age-2024-v4.csv` (6,228 rows): first-time failure by odometer band inside age groups 3–5, 6–9, 10–14 and 15+ years (2024 tests; at least 50 tests per cell; 50–499 tests flagged `rough_estimate` with a Wilson 95% interval).
+- `motriskindex-model-years-2024-v4.csv` (6,187 rows): each model year against the failure rate expected at the same age (`vs_own_age_norm`, 100 = normal) with a 95% interval; `verdict` follows the printed one-decimal bound.
 
 ## Files
 
-- `motriskindex-families-2024-v5.csv` — one row per published vehicle family.
-- `motriskindex-defect-groups-2024-v5.csv` — one row per published family and prespecified top-level defect group.
+- `motriskindex-families-2024-v4.csv` — one row per published vehicle family.
+- `motriskindex-defect-groups-2024-v4.csv` — one row per published family and prespecified top-level defect group.
 - `manifest.json` — release metadata and a source, licence, unit, denominator and one-sentence definition for every CSV column.
 - `CITATION.cff` — citation metadata for repositories and research catalogues.
 - `checksums.txt` — SHA-256 digests for every payload and metadata file in the package.
@@ -56,12 +52,12 @@ The release covers Great Britain, not Northern Ireland, and calendar 2024 only. 
 
 Source data is Crown copyright and was supplied by the Driver and Vehicle Standards Agency. It is used under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). Contains public sector information licensed under the Open Government Licence v3.0.
 
-Original MOT Risk Index derivations and metadata in this package are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Suggested attribution: “MOT Risk Index Research Desk, MOT Risk Index Evidence Capsule — 2024 v5, https://motriskindex.co.uk/statistics/mot-failure-rates/”. The underlying DVSA material remains under the Open Government Licence v3.0.
+Original MOT Risk Index derivations and metadata in this package are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Suggested attribution: “MOT Risk Index Research Desk, MOT Risk Index Evidence Capsule — 2024 v4, https://motriskindex.co.uk/statistics/mot-failure-rates/”. The underlying DVSA material remains under the Open Government Licence v3.0.
 
 Questions and corrections: [data@motriskindex.co.uk](mailto:data@motriskindex.co.uk).
 
 ## Citation
 
-Ivitskiy, I. (2026). *MOT Risk Index Evidence Capsule: Great Britain vehicle-family and defect-group aggregates, 2024* (Version 2024-v5) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22975051
+Ivitskiy, I. (2026). *MOT Risk Index Evidence Capsule: Great Britain vehicle-family and defect-group aggregates, 2024* (Version 2024-v4) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22966354
 
-DOI of this version: [10.5281/zenodo.22975051](https://doi.org/10.5281/zenodo.22975051). Concept DOI for all versions (always resolves to the latest): [10.5281/zenodo.22071424](https://doi.org/10.5281/zenodo.22071424). Mirrors: [Hugging Face](https://huggingface.co/datasets/ivitskiy/uk-mot-risk-index), [GitHub](https://github.com/ivitskiy/uk-mot-risk-index-dataset), [motriskindex.co.uk/data/](https://motriskindex.co.uk/data/manifest.json).
+DOI of this version: [10.5281/zenodo.22966354](https://doi.org/10.5281/zenodo.22966354). Concept DOI for all versions (always resolves to the latest): [10.5281/zenodo.22071424](https://doi.org/10.5281/zenodo.22071424). Mirrors: [Hugging Face](https://huggingface.co/datasets/ivitskiy/uk-mot-risk-index), [GitHub](https://github.com/ivitskiy/uk-mot-risk-index-dataset), [motriskindex.co.uk/data/](https://motriskindex.co.uk/data/manifest.json).
