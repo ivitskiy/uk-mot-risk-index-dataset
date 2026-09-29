@@ -24,6 +24,11 @@ The family and defect-group numbers are the same as v3; only the release identif
 
 v4 counted MOT tests from 2019 to 2023 twice in `motriskindex-model-years-2024-v4.csv` (a pipeline error introduced on 21 September 2026): the `n` column was inflated, `fail_pct` weighted 2019–2023 double, and the intervals were too narrow. v5 recounts each test once; verdicts follow the corrected intervals. All other files carry the same numbers as v4. Licences and attribution of every source: `ATTRIBUTION.md`.
 
+## Browse on the website
+
+Recently published pages for this dataset: <https://motriskindex.co.uk/new/datasets/>.
+Each link opens one MOT statistics page (a model year, an inspection abroad, a failure group or a postcode area).
+
 ## Files
 
 - `motriskindex-families-2024-v5.csv` — one row per published vehicle family.
